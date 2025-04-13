@@ -2,6 +2,11 @@ import datetime
 from zoneinfo import ZoneInfo
 from google.adk.agents import Agent
 
+# Helper Tools Start ==========================================>
+# The following functions are defined to provide weather and time information
+# for a specified city. The functions return a dictionary with the status
+# and either the result or an error message.
+# The functions are used as tools for the agent to perform tasks. 
 def get_weather(city: str) -> dict:
     """Retrieves the current weather report for a specified city.
 
@@ -53,6 +58,12 @@ def get_current_time(city: str) -> dict:
     )
     return {"status": "success", "report": report}
 
+
+# Agent Start ==========================================>
+# The agent is initialized with a name, model, description, and instruction.
+# It also includes a list of tools that the agent can use to perform tasks.
+# The tools are defined above and include functions for getting the weather
+# and the current time in a specified city.
 
 root_agent = Agent(
     name="weather_time_agent",
